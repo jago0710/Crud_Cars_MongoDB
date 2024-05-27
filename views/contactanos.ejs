@@ -1,0 +1,43 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <%- include('partials/icon.ejs'); %>
+    <meta charset="UTF-8">
+    <title>Contactanos - Amantes de Coches</title>
+</head>
+<body>
+
+<!--Barra de navegación-->
+<header>
+    <%- include('partials/navbar'); %>
+</header>
+
+<h3 style="text-align: center"><%= title %></h3>
+<div class="background-contactanos">
+    <div>
+        <h3 style="text-align: center;">Atención al cliente</h3>
+        <h1>Ponte en contacto con nosotros</h1>
+    </div>
+</div>
+
+<section id="FORMULARIO">
+    <h2>Información de contacto</h2>
+    <form class="c-form" action="/contactanos/add" method='post'>
+        <input type="text" name="nombreCompleto" placeholder=" Nombre y Apellido" required>
+        <input type="email" name="email" placeholder=" Email">
+        <input type="text" name="telefono" placeholder=" Telefono">
+        <textarea class="mensaje" type="text" name="mensaje" placeholder="Mensaje"></textarea>
+        <input class="button-send" type="submit" value=" ➤">
+    </form>
+</section>
+<script>
+    function msg(evt) {
+        console.log("Gracias! Pronto nos pondremos en contacto contigo")
+    }
+    const button = document.querySelector('.button-send')
+    button.addEventListener('click', aleta);
+</script>
+
+<%- include('partials/footer'); %>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <%- include('partials/icon.ejs'); %>
+    <meta charset="UTF-8">
+    <title>Modificando..</title>
+</head>
+<body>
+
+<!--Barra de navegación-->
+<header>
+    <%- include('partials/navbar'); %>
+</header>
+
+<h3 style="text-align: center"><%= title %></h3>
+
+<section id="FORMULARIO">
+    <form class="c-form" name="update" action="/coches/update" method='post'>
+        <input type="text" name="id" hidden="hidden" value="<%= coche._id %>">
+        <label for="marca">Marca</label>
+        <select name="marca" style="width: 100%; height: 40px; text-align: center; border-radius: 6px;">
+            <%  marcas.forEach(function(marca) {
+            if (marca._id.equals(coche.marca.id)){ %>
+                <option type="text" value="<%= marca._id %>" selected="true"><%= marca.nombre %></option>
+            <% } else { %>
+                    <option type="text" value="<%= marca._id %>"><%= marca.nombre %></option>
+            <% }}); %>
+        </select>
+        <input type="text" name="modelo" placeholder="Modelo" value="<%= coche.modelo %>" required>
+        <input type="text" name="version" placeholder="Versión" value="<%= coche.version %>" required>
+        <input type="text" name="año" placeholder="Año" value="<%= coche.año %>" required>
+        <input type="text" name="combustible" placeholder="Combustible" value="<%= coche.combustible %>" required>
+        <input type="text" name="imagen" placeholder="(URL)»Imagen" value="<%= coche.imagen%>" required>
+        <input class="button-send" type="submit" value=" ➤">
+    </form>
+</section>
+
+<script>
+    /*
+    $(document).ready(() => {
+        $('.button-send').click(function (event) {
+            event.preventDefault();
+           const ok = confirm("Esta seguro de la modificación?")
+            if (!ok) {
+                console.log("Haz cancelado la modificación!")
+            }
+        });
+    });
+
+     */
+</script>
+
+<%- include('partials/footer'); %>
+</body>
+</html>

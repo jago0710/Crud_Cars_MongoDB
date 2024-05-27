@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <%- include('partials/icon.ejs'); %>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<header>
+    <%- include('partials/navbar'); %>
+</header>
+
+<section class="base-index">
+    <div class="card-bienvenida">
+
+        <h1 class="title" ><%= title %></h1>
+        <p><%= autor %></p>
+        <a target="_blank" class="button-api" href="/api-docs"><b>DOCUMENTACIÓN API</b></a>
+    </div>
+</section>
+
+<%- include('partials/footer'); %>
+</body>
+</html>

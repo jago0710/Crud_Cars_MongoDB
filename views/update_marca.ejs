@@ -1,0 +1,31 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <%- include('partials/icon.ejs'); %>
+    <meta charset="UTF-8">
+    <title>Modificando..</title>
+</head>
+<body>
+
+<!--Barra de navegación-->
+<header>
+    <%- include('partials/navbar'); %>
+</header>
+
+<h3 style="text-align: center"><%= title %></h3>
+
+<section id="FORMULARIO">
+    <form class="c-form" name="update" action="/marcas/update" method='post'>
+        <input type="text" name="id" hidden="hidden" value="<%= marca._id%>">
+        <input type="text" name="nombre" placeholder="Nombre" value="<%= marca.nombre %>" required>
+        <input type="text" name="fundacion" placeholder="Fundacion" value="<%= marca.fundacion %>" required>
+        <input type="text" name="fundador" placeholder="Fundador" value="<%= marca.fundador %>" required>
+        <input type="text" name="tipo" placeholder="Tipo" value="<%= marca.tipo %>" required>
+        <input type="text" name="imagen" placeholder="(URL)»Imagen" value="<%= marca.imagen %>" required>
+        <input class="button-send" type="submit" value=" ➤">
+    </form>
+</section>
+
+<%- include('partials/footer'); %>
+</body>
+</html>

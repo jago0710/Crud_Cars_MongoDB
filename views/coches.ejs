@@ -1,0 +1,95 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="./stylesheets/style.css">
+    <%- include('partials/icon.ejs'); %>
+    <meta charset="UTF-8">
+    <title>Empresas - Amantes de Coches</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+<!--Barra de navegación-->
+<header>
+    <%- include('partials/navbar'); %>
+</header>
+
+<h3 style="text-align: center"><%= title %></h3>
+<% coches.forEach(function(coche) { %>
+    <section class="base">
+        <div class="card-base">
+            <div class="img-buttons-base">
+                <div class="buttons">
+                        <img data-modelo-id="<%= coche._id %>" class="buttonModify"
+                             src="https://cdn-icons-png.flaticon.com/128/5199/5199989.png"
+                             alt="icon of edit">
+                        <img data-modelo-id="<%= coche._id %>" class="buttonDelete"
+                             src="https://cdn-icons-png.flaticon.com/128/7560/7560086.png"
+                             alt="icon of remove">
+                </div>
+                <div class="img">
+                    <img src="<%= coche.imagen %>"
+                         alt="image of car">
+                </div>
+            </div>
+
+            <div class="attribute-base">
+                <div class="attribute-head">
+                    <div>
+                        <h4>Marca</h4>
+                        <p><%= coche.marca.nombre %></p>
+                    </div>
+                    <div>
+                        <h4>Modelo</h4>
+                        <p><%= coche.modelo %></p>
+                    </div>
+                    <div>
+                        <h4>Año</h4>
+                        <p><%= coche.año %></p>
+                    </div>
+                    <div>
+                        <h4>Combustible</h4>
+                        <p><%= coche.combustible %></p>
+                    </div>
+                </div>
+                <div class="attribute-type">
+                    <h4>Version</h4>
+                    <p><%= coche.version %></p>
+                </div>
+            </div>
+        </div>
+    </section>
+<% }) %>
+<div class="card-add">
+    <a href="/coches/new">+</a>
+</div>
+<script>
+    async function delete_item(evt) {
+        console.log('delete item')
+        // evt.preventDefault()
+        let id = ($(this).data('modelo-id'));
+        try {
+            const ok = confirm("Estas seguro de que quieres borrarlo?");
+            if (ok){
+                const response = await fetch('http://localhost:3000/coches/' + id, {
+                    method: 'DELETE'
+                });
+                window.location.reload();
+            } else {
+                console.log("Operación DELETE cancalada")
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+
+    $(document).ready(() => {
+        $('.buttonDelete').click(delete_item)
+        $('.buttonModify').click(async function (){
+            let id = ($(this).data('modelo-id'));
+            window.location.replace('http://localhost:3000/coches/update/' + id)
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <%- include('partials/icon.ejs'); %>
+    <meta charset="UTF-8">
+    <title>Modificando..</title>
+</head>
+<body>
+
+<!--Barra de navegación-->
+<header>
+    <%- include('partials/navbar'); %>
+</header>
+
+<h3 style="text-align: center"><%= title %></h3>
+
+<section id="FORMULARIO">
+    <form class="c-form" name="update" action="/marcas/add" method='post'>
+        <input type="text" name="nombre" placeholder="Nombre"  required>
+        <input type="text" name="fundacion" placeholder="Fundacion"required>
+        <input type="text" name="fundador" placeholder="Fundador" required>
+        <input type="text" name="tipo" placeholder="Tipo" required>
+        <input type="text" name="imagen" placeholder="(URL)»Imagen"  required>
+        <input class="button-send" type="submit" value=" ➤">
+    </form>
+</section>
+
+<%- include('partials/footer'); %>
+</body>
+</html>
