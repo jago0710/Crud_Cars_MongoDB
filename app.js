@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -36,11 +38,8 @@ const Contacto = require('./models/Contacto');
 const Coche = require('./models/Coche');
 const Marca = require('./models/Marca');
 const {mongo} = require("mongoose");
-
-const mongooseDB = mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+console.log(process.env.MONGODB_URI);
+const mongooseDB = mongoose.connect(process.env.MONGODB_URI);
 
 if (mongooseDB) {
     console.log('MongoDB Connected!');
